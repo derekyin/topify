@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+@font-face {
+    font-family: 'spotifyFont';
+    src: url(spotify_font.ttf);
+}
+
+h2{
+  margin: 10px;
+  font-size: 3em;
+  font-family: spotifyFont;
+  color: white;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+#features {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  border-radius: 3px;
+  top: 0;
+  height: 100px;
+  margin-top: 20px;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+
+
+  
