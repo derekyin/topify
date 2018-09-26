@@ -3,7 +3,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoia2VyZWRuaXkiLCJhIjoiY2poczdicmh3MGxodjNkcHBnd
 var dataArray;
 var countryArray = new Array();
 
-Papa.parse('https://storage.googleapis.com/topify/data', {
+Papa.parse('https://storage.googleapis.com/topify-data/topify-list.csv', {
     download:true,
     complete: function(results) {
 

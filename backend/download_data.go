@@ -31,8 +31,8 @@ func main() {
 		// TODO: Handle error.
 	}
 
-	bkt := client.Bucket("topify")
-	obj := bkt.Object("data")
+	bkt := client.Bucket("topify-data")
+	obj := bkt.Object("topify-list")
 	w := obj.NewWriter(ctx)
 	w.ContentType = "text/csv"
 
