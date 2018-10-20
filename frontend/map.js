@@ -34,7 +34,7 @@ var map = new mapboxgl.Map({
 map.on('load', function () {
         map.addSource("countries", {
         "type": "geojson",
-        "data": 'countries.json'
+        "data": 'countries.geojson'
     });
 
     map.addLayer({
