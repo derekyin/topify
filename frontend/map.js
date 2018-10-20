@@ -23,7 +23,7 @@ Papa.parse('https://storage.googleapis.com/topify-data/topify-list.csv', {
 
 var map = new mapboxgl.Map({
     container: 'map', 
-    style: 'mapbox://styles/keredniy/cjhs7mdsx6q8n2snwn7hrogq6', 
+    style: 'mapbox://styles/keredniy/cjhs7mdsx6q8n2snwn7hrogq6?optimize=true', 
     zoom: 1.4,
     minZoom: 1.2,
     maxZoom: 2,
@@ -34,7 +34,7 @@ var map = new mapboxgl.Map({
 map.on('load', function () {
         map.addSource("countries", {
         "type": "geojson",
-        "data": 'countries.geojson'
+        "data": 'https://storage.googleapis.com/topify-data/countries.geojson'
     });
 
     map.addLayer({
