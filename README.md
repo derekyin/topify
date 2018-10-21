@@ -7,3 +7,8 @@ Parsed data from https://spotifycharts.com using Go on Google App Engine with a 
 
 
 migrated from gitlab, project made in colloboration with [@himanshamra](https://github.com/himanshamra)
+
+
+### TODOs
+
+- [ ] add more in depth logging
