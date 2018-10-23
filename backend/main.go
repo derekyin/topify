@@ -14,12 +14,7 @@ func main() {
 	http.HandleFunc("/", handle)
 	http.HandleFunc("/update", Update)
 	appengine.Main()
-	// router := mux.NewRouter()
-	// log.Fatal(http.ListenAndServe(":8080", router))
-	// router.HandleFunc("/update", Update).Methods("GET")
-	// router.HandleFunc("/", info)
 
-	fmt.Println("should be here")
 }
 
 func handle(w http.ResponseWriter, r *http.Request) {
