@@ -7,13 +7,13 @@ Papa.parse('https://storage.googleapis.com/topify-data/topify-list.csv', {
     download:true,
     complete: function(results) {
 
-                dataArray = results.data;
-    
-                for(var i = 0; i < dataArray.length; i++){
-                    var country = {
-                        name: dataArray[i][0],
-                        link: dataArray[i][1],
-                }
+            dataArray = results.data;
+
+            for(var i = 0; i < dataArray.length; i++){
+                var country = {
+                    name: dataArray[i][0],
+                    link: dataArray[i][1],
+            }
 
         countryArray[i]=country;
         }

@@ -12,8 +12,6 @@
 
 # End of https://www.gitignore.io/api/firebase
 
-**/Topify-54982a039003.json
-**/topify-217503-firebase-adminsdk-vfh6n-9cdf695562.json
 **.log
 **/temp_data
 **/build

@@ -34,9 +34,5 @@
   unused-packages = true
 
 [[constraint]]
-  name = "firebase.google.com/go"
-  version = "3.4.0"
-
-[[constraint]]
-  name = "github.com/apsdehal/go-logger"
-  version = "1.2.0"
+  name = "github.com/gorilla/mux"
+  version = "1.6.2"
