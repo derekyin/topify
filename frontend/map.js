@@ -7,17 +7,15 @@ Papa.parse('https://storage.googleapis.com/topify-data/topify-list.csv', {
     download:true,
     complete: function(results) {
 
-            dataArray = results.data;
+        dataArray = results.data;
 
-            for(var i = 0; i < dataArray.length; i++){
-                var country = {
-                    name: dataArray[i][0],
-                    link: dataArray[i][1],
+        for(var i = 0; i < dataArray.length; i++){
+            var country = {
+                name: dataArray[i][0],
+                link: dataArray[i][1],
             }
-
-        countryArray[i]=country;
+            countryArray[i]=country;
         }
-        console.log(countryArray)
     }
 });
 
@@ -95,11 +93,11 @@ map.on('load', function () {
 
         for(var i = 0; i < countryArray.length; i++){
             if(countryArray[i].name == e.features[0].properties.iso_a2){
-                    map.setFilter("countries_hover", ["==", "name", e.features[0].properties.name]);
-                
-                    popup.setLngLat(e.lngLat)
-                    .setHTML('<iframe src="https://open.spotify.com/embed?uri=spotify:track:'+countryArray[i].link+'"width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>')
-                    .addTo(map);
+                map.setFilter("countries_hover", ["==", "name", e.features[0].properties.name]);
+            
+                popup.setLngLat(e.lngLat)
+                .setHTML('<iframe src="https://open.spotify.com/embed?uri=spotify:track:'+countryArray[i].link+'"width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>')
+                .addTo(map);
             }
         }
     });
