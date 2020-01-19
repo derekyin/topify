@@ -1,10 +1,10 @@
-mapboxgl.accessToken = 'pk.eyJ1Ijoia2VyZWRuaXkiLCJhIjoiY2poczdicmh3MGxodjNkcHBndzZhMGpoeSJ9.PTnSTWrvBoUtTGvqxgtiLw';
+mapboxgl.accessToken = 'pk.eyJ1Ijoia2VyZWRuaXkiLCJhIjoiY2s1bGNrN2lpMG5pNjNnbzc4dnh4dzRhYyJ9.i_XmhuMlaHmGGpyvaygBzw';
 
 var dataArray;
-var countryArray = new Array();
+var countryArray = {};
 
 Papa.parse('https://storage.googleapis.com/topify-data/topify-list.csv', {
-    download:true,
+    download: true,
     complete: function(results) {
 
         dataArray = results.data;
@@ -14,7 +14,7 @@ Papa.parse('https://storage.googleapis.com/topify-data/topify-list.csv', {
                 name: dataArray[i][0],
                 link: dataArray[i][1],
             }
-            countryArray[i]=country;
+            countryArray[country.name] = country;
         }
     }
 });
@@ -30,7 +30,7 @@ var map = new mapboxgl.Map({
 });
 
 map.on('load', function () {
-        map.addSource("countries", {
+    map.addSource("countries", {
         "type": "geojson",
         "data": 'https://storage.googleapis.com/topify-data/countries.geojson'
     });
@@ -71,34 +71,20 @@ map.on('load', function () {
 
     var popup;
 
-    map.on("mousemove", "countries", function(e) {
-
-        for(var i = 0; i < countryArray.length; i++){
-            if(countryArray[i].name == e.features[0].properties.iso_a2){
-                map.setFilter("countries_hover", ["==", "name", e.features[0].properties.name]);
-            }
-        }
-    });
-
-    map.on("mouseleave", "countries", function() {
-        map.setFilter("countries_hover", ["==", "name", ""]);
-    });
-
     map.on("click", "countries", function(e) {
-
         popup = new mapboxgl.Popup({
             closeButton: false,
             closeOnClick: true
-    });
+        });
 
-        for(var i = 0; i < countryArray.length; i++){
-            if(countryArray[i].name == e.features[0].properties.iso_a2){
-                map.setFilter("countries_hover", ["==", "name", e.features[0].properties.name]);
-            
-                popup.setLngLat(e.lngLat)
-                .setHTML('<iframe src="https://open.spotify.com/embed?uri=spotify:track:'+countryArray[i].link+'"width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>')
-                .addTo(map);
-            }
+        if(e.features[0].properties.iso_a2 in countryArray){       
+            popup.setLngLat(e.lngLat)
+            .setHTML('<iframe src="https://open.spotify.com/embed?uri=spotify:track:'+countryArray[e.features[0].properties.iso_a2].link+'"width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>')
+            .addTo(map);
+        }else{
+            popup.setLngLat(e.lngLat)
+            .setHTML('<h1>NO DATA</h1>')
+            .addTo(map)
         }
     });
 });

@@ -16,3 +16,5 @@
 **/tmp
 **/build
 **/out
+
+*.DS_Store
