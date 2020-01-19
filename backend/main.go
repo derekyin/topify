@@ -13,6 +13,7 @@ func main() {
 
 	http.HandleFunc("/", handle)
 	http.HandleFunc("/update", Update)
+	http.ListenAndServe(":8000", nil)
 	appengine.Main()
 
 }
