@@ -60,7 +60,7 @@ func (f *fetcher) FetchData() error {
 	for _, c := range f.countrySlice {
 		if c.Code != "" {
 			fileURL := fmt.Sprintf("https://spotifycharts.com/regional/%s/daily/latest/download", c.Code)
-			outputPath := fmt.Sprintf("./tmp/%s.csv", c.Code)
+			outputPath := fmt.Sprintf("/tmp/%s.csv", c.Code)
 			log.Print(c.Code + " downloaded")
 			err = DownloadFile(outputPath, fileURL)
 			if err != nil {
@@ -71,7 +71,7 @@ func (f *fetcher) FetchData() error {
 
 	err = f.CreateCSV()
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	return nil
@@ -79,7 +79,7 @@ func (f *fetcher) FetchData() error {
 
 func (f *fetcher) CreateCSV() error {
 
-	topify, err := os.Create("./tmp/topify-list.csv")
+	topify, err := os.Create("/tmp/topify-list.csv")
 	if err != nil {
 		return err
 	}
@@ -112,7 +112,7 @@ func (f *fetcher) CreateCSV() error {
 
 func DownloadFile(filepath string, url string) error {
 
-	out, err := os.Create(filepath)
+	out, err := os.Create("/" + filepath)
 	if err != nil {
 		return err
 	}

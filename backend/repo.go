@@ -31,7 +31,7 @@ func NewRepo(st *storage.Client, bkt *storage.BucketHandle, obj *storage.ObjectH
 
 func (r *repo) Upload() error {
 
-	f, err := os.Open("./tmp/topify-list.csv")
+	f, err := os.Open("/tmp/topify-list.csv")
 	if err != nil {
 		return err
 	}
